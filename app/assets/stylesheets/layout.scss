@@ -1,4 +1,37 @@
 *{
   justify-content: center;
   align-items: center;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body{
+  background-color: #d5dae2;
+  padding: 40px
+}
+
+table{
+  width: 100%
+}
+
+th,td{
+  border: 1px dashed #a1b6d8;
+}
+
+th{
+  text-align: left;
+  background-color: #a1b6d8;
+  line-height: 30px;
+}
+
+td{
+  height: 40px
+}
+
+a{
+  text-decoration: none;
+  background: #a1b6d8;
+  color: #fff;
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #8a9cbe;
 }

@@ -19,33 +19,9 @@ RSpec.describe "/pets", type: :request do
     attributes_for(:my_dog)
   }
 
-  describe "GET /index" do
-    it "renders a successful response" do
-      Pet.create! valid_attributes
-      get pets_url
-      expect(response).to be_successful
-    end
-  end
-
-  describe "GET /show" do
-    it "renders a successful response" do
-      pet = Pet.create! valid_attributes
-      get pet_url(pet)
-      expect(response).to be_successful
-    end
-  end
-
   describe "GET /new" do
     it "renders a successful response" do
       get new_pet_url
-      expect(response).to be_successful
-    end
-  end
-
-  describe "GET /edit" do
-    it "render a successful response" do
-      pet = Pet.create! valid_attributes
-      get edit_pet_url(pet)
       expect(response).to be_successful
     end
   end
@@ -60,45 +36,8 @@ RSpec.describe "/pets", type: :request do
 
       it "redirects to the created pet" do
         post pets_url, params: { pet: valid_attributes }
-        expect(response).to redirect_to(pet_url(Pet.last))
+        expect(response).to redirect_to(root_path)
       end
-    end
-  end
-
-  describe "PATCH /update" do
-    context "with valid parameters" do
-      let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
-      }
-
-      it "updates the requested pet" do
-        pet = Pet.create! valid_attributes
-        patch pet_url(pet), params: { pet: new_attributes }
-        pet.reload
-        skip("Add assertions for updated state")
-      end
-
-      it "redirects to the pet" do
-        pet = Pet.create! valid_attributes
-        patch pet_url(pet), params: { pet: new_attributes }
-        pet.reload
-        expect(response).to redirect_to(pet_url(pet))
-      end
-    end
-  end
-
-  describe "DELETE /destroy" do
-    it "destroys the requested pet" do
-      pet = Pet.create! valid_attributes
-      expect {
-        delete pet_url(pet)
-      }.to change(Pet, :count).by(-1)
-    end
-
-    it "redirects to the pets list" do
-      pet = Pet.create! valid_attributes
-      delete pet_url(pet)
-      expect(response).to redirect_to(pets_url)
     end
   end
 end
