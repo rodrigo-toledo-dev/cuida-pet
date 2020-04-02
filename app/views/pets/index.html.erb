@@ -9,7 +9,7 @@
       <th>Birthday</th>
       <th>Race</th>
       <th>Pet type</th>
-      <th>Actions</th>
+      <th>Medical Cards</th>
     </tr>
   </thead>
 
@@ -20,7 +20,10 @@
         <td><%= pet.birthday %></td>
         <td><%= pet.race %></td>
         <td><%= pet.pet_type %></td>
-        <td></td>
+        <td>
+          <%=link_to 'Create Medical Card', new_medical_card_path(pet.id)%>
+          <%=link_to 'List of Medical Cards', medical_cards_path(pet.id) if pet.medical_cards.count > 0%>
+        </td>
       </tr>
     <% end %>
   </tbody>

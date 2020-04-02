@@ -4,7 +4,8 @@ class MedicalCardsController < ApplicationController
   # GET /medical_cards
   # GET /medical_cards.json
   def index
-    @medical_cards = MedicalCard.all
+    pet = Pet.find(params[:id])
+    @medical_cards = pet.medical_cards.all
   end
 
   # GET /medical_cards/1
@@ -22,12 +23,10 @@ class MedicalCardsController < ApplicationController
   def create
     @medical_card = MedicalCard.new(medical_card_params)
 
-    respond_to do |format|
-      if @medical_card.save
-        redirect_to root_path, notice: 'Medical card was successfully created.'
-      else
-        format.html { render :new }
-      end
+    if @medical_card.save
+      redirect_to root_path, notice: 'Medical card was successfully created.'
+    else
+      render :new
     end
   end
 
