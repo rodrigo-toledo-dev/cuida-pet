@@ -14,4 +14,10 @@ FactoryBot.define do
     race { 'Persa' }
     pet_type { :cat } # 1 Cat
   end
+
+  factory :medical_card do
+    my_dog
+    symptoms { 'symptoms of my pet' }
+    treatment { 'treatment to my pet' }
+  end
 end

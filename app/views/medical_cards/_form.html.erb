@@ -1,0 +1,32 @@
+<%= form_with(model: medical_card, local: true) do |form| %>
+  <% if medical_card.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(medical_card.errors.count, "error") %> prohibited this medical_card from being saved:</h2>
+
+      <ul>
+        <% medical_card.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :pet_id %>
+    <%= form.text_field :pet_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :symptoms %>
+    <%= form.text_area :symptoms %>
+  </div>
+
+  <div class="field">
+    <%= form.label :treatment %>
+    <%= form.text_area :treatment %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
